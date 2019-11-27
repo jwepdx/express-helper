@@ -1,7 +1,7 @@
 {
   "name": "express-helper",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "npm package for helping create an express.js web server",
   "main": "index.js",
   "author": "Jacob Evans",
   "repository": {
