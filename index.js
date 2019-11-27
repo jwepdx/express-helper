@@ -6,21 +6,6 @@ const https = require('https');
 
 /**
  * @function
- * @param {boolean} redirect - True to redirect HTTP to HTTPS
- **/
-module.exports.redirectHttp = function(redirect) {
-  if (redirect) {
-    express.use(require("helmet")());
-    express.all("*", function(request, response) {
-      if (request.protocol === "http") {
-        response.redirect("https://" + request.hostname + req.originalUrl);
-      }
-    })
-    http.createServer(express).listen(80);
-  }
-}
-/**
- * @function
  * @param {Function} routes - Routing Function
  * @param {number} httpPort - Server Port
  **/
@@ -44,4 +29,20 @@ module.exports.https = function(route, httpsPort, privateKey, certificate) {
     key: fs.readFileSync(privateKey, "utf-8"),
     cert: fs.readFileSync(certificate, "utf-8")
   }, express).listen(httpsPort);
+}
+
+/**
+ * @function
+ * @param {boolean} redirect - True to redirect HTTP to HTTPS
+ **/
+module.exports.redirectHttp = function(redirect) {
+  if (redirect) {
+    express.use(require("helmet")());
+    express.all("*", function(request, response) {
+      if (request.protocol === "http") {
+        response.redirect("https://" + request.hostname + req.originalUrl);
+      }
+    })
+    http.createServer(express).listen(80);
+  }
 }
