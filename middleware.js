@@ -27,4 +27,4 @@ module.exports = function(express) {
     saveUninitialized: true
   }));
   return express;
-}
+};

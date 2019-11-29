@@ -14,7 +14,7 @@ module.exports.http = function(routes, httpPort) {
   require("./middleware.js")(express);
   route(express, require(routes));
   http.createServer(express).listen(httpPort);
-}
+};
 
 /**
  * @function
@@ -30,7 +30,7 @@ module.exports.https = function(routes, httpsPort, privateKey, certificate) {
     key: fs.readFileSync(privateKey, "utf-8"),
     cert: fs.readFileSync(certificate, "utf-8")
   }, express).listen(httpsPort);
-}
+};
 
 /**
  * @function
@@ -41,9 +41,9 @@ module.exports.redirectHttp = function(redirect) {
     express.use(require("helmet")());
     express.all("*", function(request, response) {
       if (request.protocol === "http") {
-        response.redirect("https://" + request.hostname + req.originalUrl);
+        response.redirect("https://" + request.hostname + request.originalUrl);
       }
-    })
+    });
     http.createServer(express).listen(80);
   }
-}
+};
