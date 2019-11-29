@@ -1,30 +1,31 @@
 'use strict';
 const express = require("express")();
+const route = require('./route.js');
 const fs = require('fs');
 const http = require('http');
 const https = require('https');
 
 /**
  * @function
- * @param {Function} routes - Routing Function
+ * @param {string} routes - Routing Path File
  * @param {number} httpPort - Server Port
  **/
-module.exports.http = function(route, httpPort) {
+module.exports.http = function(routes, httpPort) {
   require('./middleware.js')(express);
-  route(express);
+  route(express, require(routes));
   http.createServer(express).listen(httpPort);
 }
 
 /**
  * @function
- * @param {Function} routes - Routing Function
+ * @param {string} routes - Routing Path File
  * @param {number} httpsPort - Server Port
  * @param {string} privateKey - Private Key File
  * @param {string} certificate - Certificate File
  **/
-module.exports.https = function(route, httpsPort, privateKey, certificate) {
+module.exports.https = function(routes, httpsPort, privateKey, certificate) {
   require('./middleware.js')(express);
-  route(express);
+  route(express, require(routes));
   https.createServer({
     key: fs.readFileSync(privateKey, "utf-8"),
     cert: fs.readFileSync(certificate, "utf-8")

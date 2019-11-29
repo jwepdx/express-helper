@@ -5,7 +5,8 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 /**
- * @param {Function} express - Expres Function
+ * @function
+ * @param {Function} express - Express Function
  * @returns {Function} - Express Function
  **/
 module.exports = function(express) {
