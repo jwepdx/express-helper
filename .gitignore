@@ -1,2 +1,6 @@
 node_modules
+<<<<<<< HEAD
 *.test*
+=======
+*.test.*
+>>>>>>> c22d97a6224eccdaf31c601deda81b9bf418aebf

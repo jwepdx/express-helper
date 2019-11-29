@@ -37,4 +37,8 @@ module.exports = function(express, routes) {
   });
   express.use(error);
   return express;
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> c22d97a6224eccdaf31c601deda81b9bf418aebf

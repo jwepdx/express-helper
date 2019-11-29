@@ -1,35 +1,36 @@
-'use strict';
+"use strict";
 const express = require("express")();
-const fs = require('fs');
-const http = require('http');
-const https = require('https');
+const route = require("./route.js");
+const fs = require("fs");
+const http = require("http");
+const https = require("https");
 
 /**
  * @function
- * @param {Function} routes - Routing Function
+ * @param {string} routes - Routing Path File
  * @param {number} httpPort - Server Port
  **/
-module.exports.http = function(route, httpPort) {
-  require('./middleware.js')(express);
-  route(express);
+module.exports.http = function(routes, httpPort) {
+  require("./middleware.js")(express);
+  route(express, require(routes));
   http.createServer(express).listen(httpPort);
-}
+};
 
 /**
  * @function
- * @param {Function} routes - Routing Function
+ * @param {string} routes - Routing Path File
  * @param {number} httpsPort - Server Port
  * @param {string} privateKey - Private Key File
  * @param {string} certificate - Certificate File
  **/
-module.exports.https = function(route, httpsPort, privateKey, certificate) {
-  require('./middleware.js')(express);
-  route(express);
+module.exports.https = function(routes, httpsPort, privateKey, certificate) {
+  require("./middleware.js")(express);
+  route(express, require(routes));
   https.createServer({
     key: fs.readFileSync(privateKey, "utf-8"),
     cert: fs.readFileSync(certificate, "utf-8")
   }, express).listen(httpsPort);
-}
+};
 
 /**
  * @function
@@ -40,9 +41,9 @@ module.exports.redirectHttp = function(redirect) {
     express.use(require("helmet")());
     express.all("*", function(request, response) {
       if (request.protocol === "http") {
-        response.redirect("https://" + request.hostname + req.originalUrl);
+        response.redirect("https://" + request.hostname + request.originalUrl);
       }
-    })
+    });
     http.createServer(express).listen(80);
   }
-}
+};
