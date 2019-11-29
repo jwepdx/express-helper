@@ -5,7 +5,7 @@
 ``` bash
 $ npm install express-helper
 ```
-## usage
+## Usage
 ``` javascript
 const server = require('express-helper');
 
