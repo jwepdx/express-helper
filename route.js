@@ -10,16 +10,6 @@ const error = require("express").Router();
  **/
 module.exports = function(express, routes) {
   routes.forEach(function(route) {
-    if (route.secured === false) {
-      if (route.page) {
-        unsecured[route.method](route.path, function(request, response) {
-          response.render(route.page, route.pageData);
-        });
-      }
-      if (route.data) {
-        unsecured[route.method](route.path, route.data);
-      }
-    }
     if (route.secured === true) {
       if (route.page) {
         secured[route.method](route.path, function(request, response) {
@@ -28,6 +18,15 @@ module.exports = function(express, routes) {
       }
       if (route.data) {
         secured[route.method](route.path, route.data);
+      }
+    } else {
+      if (route.page) {
+        unsecured[route.method](route.path, function(request, response) {
+          response.render(route.page, route.pageData);
+        });
+      }
+      if (route.data) {
+        unsecured[route.method](route.path, route.data);
       }
     }
   });
