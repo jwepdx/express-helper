@@ -32,7 +32,7 @@
     "helper"
   ],
   "directories": {
-    "doc": "./documentation"
+    "doc": "./docs"
   },
   "devDependencies": {
     "jsdoc": "^3.6.3",
