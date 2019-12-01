@@ -16,7 +16,21 @@ $ npm install express-helper
 ``` javascript
 const server = require('express-helper');
 
-server.http(require('./routes'), 80);
+server.http(require('./routes'), 80,{
+  views: "views.test",
+  viewEngine: "ejs",
+  static: "static.test",
+  session: {
+    use: true,
+    name: "sessionId",
+    secret: "unknown string",
+    resave: false,
+    saveUninitialized: true
+  },
+  authFunction: function(req, res, next) {
+    next();
+  }
+});
 ```
 
 ## [Documentation](/wiki)
