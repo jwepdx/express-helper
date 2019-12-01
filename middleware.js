@@ -17,10 +17,13 @@ const bodyParser = require("body-parser");
  * @returns {Function} - Express Function
  **/
 module.exports = function(express, options) {
+  var views = options.views || "views";
   express.set("views", __dirname + "/" + options.views);
-  express.set("view engine", options.viewEngine);
+  var viewEngine = options.viewEngine || "ejs";
+  express.set("view engine", viewEngine);
   express.use(require("helmet")());
-  express.use(require("express").static(options.static));
+  var static = options.static || "static";
+  express.use(require("express").static(static));
   express.use(require("express").static("node_modules"));
   express.use(require("cookie-parser")());
   express.use(bodyParser.urlencoded({
