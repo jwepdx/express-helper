@@ -1,6 +1,6 @@
 {
   "name": "express-helper",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "npm package for helping create an express.js web server",
   "main": "index.js",
   "author": "Jacob Evans",
@@ -10,14 +10,14 @@
   },
   "license": "MIT",
   "dependencies": {
-    "argon2-ffi": "^1.1.2",
-    "bluebird": "^3.7.1",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
-    "ejs": "^2.7.2",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
-    "helmet": "^3.21.2",
-    "mysql": "^2.17.1"
+    "helmet": "^3.21.2"
+  },
+  "keywords": ["express", "express-helper", "expressjs", "routing", "json", "node", "web server", "api", "server", "helper"],
+  "directories": {
+    "doc": "./documentation"
   }
 }

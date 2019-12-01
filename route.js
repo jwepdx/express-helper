@@ -2,33 +2,17 @@
 const unsecured = require("express").Router();
 const secured = require("express").Router();
 const error = require("express").Router();
+
 /**
- *@function
- *@param {Function} express - Express.js Function
- *@param {Object} routes - Array of routes for express
- *@returns {Function} - Express.js Function
+ * @function
+ * @param {Function} express - Express.js Function
+ * @param {array} routes - Array of routes for express
+ * @param {Function} authFunction - Function for authentication
+ * @returns {Function} - Express.js Function
  **/
-module.exports = function(express, routes) {
+module.exports = function(express, routes, authFunction) {
   routes.forEach(function(route) {
-    if (route.secured === true) {
-      if (route.page) {
-        secured[route.method](route.path, function(request, response) {
-          response.render(route.page, route.pageData);
-        });
-      }
-      if (route.data) {
-        secured[route.method](route.path, route.data);
-      }
-    } else {
-      if (route.page) {
-        unsecured[route.method](route.path, function(request, response) {
-          response.render(route.page, route.pageData);
-        });
-      }
-      if (route.data) {
-        unsecured[route.method](route.path, route.data);
-      }
-    }
+    router(route, authFunction)
   });
   express.use(unsecured);
   express.use(secured);
@@ -37,8 +21,22 @@ module.exports = function(express, routes) {
   });
   express.use(error);
   return express;
-<<<<<<< HEAD
 };
-=======
+
+/**
+ * @function
+ * @param {Object} route - Object defining page to be routed
+ * @param {boolean} route.secured - If page is secured or not
+ * @param {string} route.method - HTTP method to access page
+ * @param {Function} route.data - Function for processing request
+ * @param {Function} authFunction - Function for authentication
+ * @returns {Function} - Routers for Express
+ **/
+function router(route, authFunction) {
+  if (route.secured === true) {
+    secured[route.method](route.path, authFunction, route.data);
+  } else {
+    unsecured[route.method](route.path, route.data);
+  }
+  return unsecured, secured;
 };
->>>>>>> c22d97a6224eccdaf31c601deda81b9bf418aebf
