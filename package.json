@@ -16,8 +16,26 @@
     "express-session": "^1.17.0",
     "helmet": "^3.21.2"
   },
-  "keywords": ["express", "express-helper", "expressjs", "routing", "json", "node", "web server", "api", "server", "helper"],
+  "scripts": {
+    "docs": "jsdoc index.js -d ./documentation && jsdoc2md index.js > ./documentation/documentation.md"
+  },
+  "keywords": [
+    "express",
+    "express-helper",
+    "expressjs",
+    "routing",
+    "json",
+    "node",
+    "web server",
+    "api",
+    "server",
+    "helper"
+  ],
   "directories": {
     "doc": "./documentation"
+  },
+  "devDependencies": {
+    "jsdoc": "^3.6.3",
+    "jsdoc-to-markdown": "^5.0.3"
   }
 }
