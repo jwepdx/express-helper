@@ -18,12 +18,12 @@ const bodyParser = require("body-parser");
  **/
 module.exports = function(express, options) {
   var views = options.views || "views";
-  express.set("views", __dirname + "/" + options.views);
+  express.set("views", __dirname + "/" + views);
   var viewEngine = options.viewEngine || "ejs";
   express.set("view engine", viewEngine);
   express.use(require("helmet")());
-  var static = options.static || "static";
-  express.use(require("express").static(static));
+  var staticDirectory = options.static || "static";
+  express.use(require("express").static(staticDirectory));
   express.use(require("express").static("node_modules"));
   express.use(require("cookie-parser")());
   express.use(bodyParser.urlencoded({
