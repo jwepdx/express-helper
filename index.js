@@ -1,12 +1,16 @@
-/** @module express-helper **/
+/**
+ * @author Jacob Evans
+ * @license MIT
+ * @description Module to help create an express server with propper middleware and headers
+ * @summary Helps create express server
+ **/
 "use strict";
-const express = require("express")();
 const fs = require("fs");
 const http = require("http");
 const https = require("https");
 
 /**
- * @function http
+ * @module http
  * @param {string} routes - Routing Path File (JS file)
  * @param {number} httpPort - Server Port
  * @param {object} options - Configuration options for server
@@ -20,11 +24,12 @@ const https = require("https");
  * @param {boolean} options.session.resave - Resave Session
  * @param {boolean} options.session.saveUninitialized - Save Uninitialized
  * @param {Function} options.authFunction - Function for authentication, if null secured routes will error
+ * @description Create a HTTP Server
  * @example <caption>Create a HTTP server on port 80</caption>
  * http("./routes.test.js", 80, {
- *   views: "views.test",
+ *   views: "views",
  *   viewEngine: "ejs",
- *   static: "static.test",
+ *   static: "static",
  *   session: {
  *     use: true,
  *     name: "sessionId",
@@ -38,13 +43,24 @@ const https = require("https");
  * });
  **/
 module.exports.http = function(routes, httpPort, options) {
-  require("./middleware.js")(express, options);
-  require("./route.js")(express, require(routes), options.authFunction);
-  http.createServer(express).listen(httpPort);
+  var routes = process.env.routes || routes || __dirname + "/routes.js";
+  var port = process.env.port || httpPort || 80;
+  var options = process.env.options || options || {
+    views: "views",
+    viewEngine: "ejs",
+    static: "static",
+    session: {
+      use: false,
+    }
+  };
+  const express = require("express")();
+  require("./lib/middleware.js")(express, options);
+  require("./lib/route.js")(express, require(routes), options.authFunction);
+  http.createServer(express).listen(port);
 };
 
 /**
- * @function https
+ * @module https
  * @param {string} routes - Routing Path File
  * @param {number} httpsPort - Server Port
  * @param {object} httpsOptions - Configuration for HTTPS
@@ -61,14 +77,15 @@ module.exports.http = function(routes, httpPort, options) {
  * @param {boolean} options.session.resave - Resave Session
  * @param {boolean} options.session.saveUninitialized - Save Uninitialized
  * @param {Function} options.authFunction - Function for authentication, if null secured routes will error
+ * @description Create a HTTPS Server
  * @example <caption>Create a HTTPS server on port 443</caption>
  * https("./routes.test.js", 443, {
  *  privateKey: "./path/to/privateKey",
  *  certificate: "./path/to/certificate"
  * }, {
- *   views: "views.test",
+ *   views: "views",
  *   viewEngine: "ejs",
- *   static: "static.test",
+ *   static: "static",
  *   session: {
  *     use: true,
  *     name: "sessionId",
@@ -82,8 +99,9 @@ module.exports.http = function(routes, httpPort, options) {
  * });
  **/
 module.exports.https = function(routes, httpsPort, httpsOptions, options) {
-  require("./middleware.js")(express, options);
-  require("./route.js")(express, require(routes), options.authFunction);
+  const express = require("express")();
+  require("./lib/middleware.js")(express, options);
+  require("./lib/route.js")(express, require(routes), options.authFunction);
   https.createServer({
     key: fs.readFileSync(httpsOptions.privateKey, "utf-8"),
     cert: fs.readFileSync(httpsOptions.certificate, "utf-8")
@@ -91,13 +109,15 @@ module.exports.https = function(routes, httpsPort, httpsOptions, options) {
 };
 
 /**
- * @function redirectHttp
+ * @module redirectHttp
  * @param {boolean} redirect - True to redirect HTTP to HTTPS
+ * @description Redirect HTTP to HTTPS
  * @example <caption>Redirect HTTP to HTTPS</caption>
  * redirectHttp(true);
  **/
 module.exports.redirectHttp = function(redirect) {
-  if (redirect) {
+  if (redirect === true) {
+    const express = require("express")();
     express.use(require("helmet")());
     express.all("*", function(request, response) {
       if (request.protocol === "http") {

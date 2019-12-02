@@ -17,7 +17,7 @@
     "helmet": "^3.21.2"
   },
   "scripts": {
-    "docs": "jsdoc index.js -d ./documentation && jsdoc2md index.js > ./documentation/documentation.md"
+    "docs": "jsdoc --configure .jsdoc.json --verbose && jsdoc2md index.js > ./docs/documentation.md"
   },
   "keywords": [
     "express",
@@ -32,10 +32,12 @@
     "helper"
   ],
   "directories": {
+    "lib": "./lib",
     "doc": "./docs"
   },
   "devDependencies": {
     "jsdoc": "^3.6.3",
-    "jsdoc-to-markdown": "^5.0.3"
+    "jsdoc-to-markdown": "^5.0.3",
+    "jsdoc-template": "https://github.com/braintree/jsdoc-template/archive/3.3.0.tar.gz"
   }
 }
