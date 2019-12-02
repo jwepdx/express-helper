@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      redirectHttp - Documentation
+      lib/route.js - Documentation
   </title>
 
   <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
@@ -81,198 +83,48 @@
   <div id="main">
     
       <h1 class="page-title">
-        redirectHttp
+        lib/route.js
       </h1>
     
 
     
+      
 
 <section>
-  <header>
-    
-      
-        
-  </header>
-
   <article>
-    <div class="container-overview">
-      
-        
-          <div class="description">
-            <p>Redirect HTTP to HTTPS</p>
-          </div>
-        
-
-        
-          
-
-
-
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>redirect</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      boolean
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>True to redirect HTTP to HTTPS</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="index.js.html">index.js</a>, <a href="index.js.html#line203">line 203</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="example-container">
-    <a class="link-icon" href="#redirectHttp-examples">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h5 id="redirectHttp-examples">Example</h5>
-    
-  <p class="code-caption">
-    Redirect HTTP to HTTPS
-  </p>
-
-
-  <pre class="prettyprint"><code>redirectHttp(true);</code></pre>
-
-
-  </div>
-
-
-        
-      
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
+    <pre class="prettyprint source linenums"><code>"use strict";
+const unsecured = require("express").Router();
+const secured = require("express").Router();
+const error = require("express").Router();
+
+/**
+ * @function
+ * @param {Function} express - Express.js Function
+ * @param {array} routes - Array of routes for express
+ * @param {Function} authFunction - Function for authentication
+ * @returns {Function} - Express.js Function
+ **/
+module.exports = function(express, routes, authFunction) {
+  routes.forEach(function(route) {
+    if (route.secured === true) {
+      secured[route.method](route.path, authFunction, route.data);
+    } else {
+      unsecured[route.method](route.path, route.data);
+    }
+    return unsecured, secured;
+  });
+  express.use(unsecured);
+  express.use(secured);
+  error.use(function(req, res, next) {
+    res.status(404).render("404");
+  });
+  express.use(error);
+  return express;
+};</code></pre>
   </article>
 </section>
 
-
+    
 
 
   </div>

@@ -1,0 +1,181 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+      lib/middleware.js - Documentation
+  </title>
+
+  <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+  <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+  
+  <link type="text/css" rel="stylesheet" href="styles/collapse.css">
+  
+
+  
+
+  <!-- start Mixpanel -->
+  <script type="text/javascript">(function(e,a){if(!a.__SV){var b=window;try{var c,l,i,j=b.location,g=j.hash;c=function(a,b){return(l=a.match(RegExp(b+"=([^&]*)")))?l[1]:null};g&&c(g,"state")&&(i=JSON.parse(decodeURIComponent(c(g,"state"))),"mpeditor"===i.action&&(b.sessionStorage.setItem("_mpcehash",g),history.replaceState(i.desiredHash||"",e.title,j.pathname+j.search)))}catch(m){}var k,h;window.mixpanel=a;a._i=[];a.init=function(b,c,f){function e(b,a){var c=a.split(".");2==c.length&&(b=b[c[0]],a=c[1]);b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,
+  0)))}}var d=a;"undefined"!==typeof f?d=a[f]=[]:f="mixpanel";d.people=d.people||[];d.toString=function(b){var a="mixpanel";"mixpanel"!==f&&(a+="."+f);b||(a+=" (stub)");return a};d.people.toString=function(){return d.toString(1)+".people (stub)"};k="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+  for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";c=e.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c)}})(document,window.mixpanel||[]);
+  mixpanel.init("1919205b2da72e4da3b9b6639b444d59");</script>
+  <!-- end Mixpanel -->
+</head>
+
+<body>
+  <svg style="display: none;">
+    <defs>
+      <symbol id="linkIcon" fill="#706d77" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h24v24H0z" fill="none"/>
+          <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <label for="nav-trigger" class="navicon-button x">
+    <div class="navicon"></div>
+  </label>
+
+  <label for="nav-trigger" class="overlay"></label>
+
+  <div class="top-nav-wrapper">
+    <ul>
+      <li >
+        <a href="index.html">
+          
+            <svg fill="#6D6D6D" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+              <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+          
+          
+        </a>
+      </li>
+
+      
+
+    </ul>
+  </div>
+
+  <nav>
+    <h3 class="reference-title">
+      Express Helper
+    </h3>
+
+    
+
+    <h3>Modules</h3><ul><li id="http-nav"><a href="module-http.html">http</a></li><li id="https-nav"><a href="module-https.html">https</a></li><li id="redirectHttp-nav"><a href="module-redirectHttp.html">redirectHttp</a></li></ul>
+  </nav>
+
+  <div id="main">
+    
+      <h1 class="page-title">
+        lib/middleware.js
+      </h1>
+    
+
+    
+      
+
+<section>
+  <article>
+    <pre class="prettyprint source linenums"><code>"use strict";
+const bodyParser = require("body-parser");
+/**
+ * @function
+ * @param {Function} express - Express Function
+ * @param {object} middlewareOptions - Configuration options for server middleware
+ * @param {string} middlewareOptions.views - Folder for application views
+ * @param {string} middlewareOptions.viewEngine - Express View Engine
+ * @param {string} middlewareOptions.static - Folder to server static files from
+ * @param {boolean} middlewareOptions.session - Use express-session?
+ * @param {Object} sessionOptions - Configuration for session
+ * @param {Object} sessionOptions.cookie - Object for configuring session cookie
+ * @param {string} sessionOptions.cookie.domain - Domain the cookie applies to
+ * @param {Date} sessionOptions.cookie.expires - Date the cookie expires
+ * @param {boolean} sessionOptions.cookie.httpOnly - If true, confines cookie to HTTP request only
+ * @param {number} sessionOptions.cookie.maxAge - Time session is valid in milliseconds
+ * @param {string} sessionOptions.cookie.path - Path that cookie is active on
+ * @param {boolean|string} sessionOptions.cookie.sameSite - Sets value for SameSite Attribute, see express-session for more details
+ * @param {boolean} sessionOptions.cookie.secure - If true cookie will only be sent over HTTPS
+ * @param {string} sessionOptions.name - Name of session ID cookie
+ * @param {boolean} sessionOptions.proxy - Is proxy trusted
+ * @param {boolean} sessionOptions.resave - Saves session even if not modified
+ * @param {boolean} sessionOptions.rolling - If true forces session identifier to be set on each response
+ * @param {boolean} sessionOptions.saveUninitialized - Saves session when new and not modified
+ * @param {string|Object[]} sessionOptions.secret - Secret to secure session
+ * @param {string} sessionOptions.unset - What to do when session is unset
+ * @param {Object} sessionOptions.store - Object to configure MySQL Session storage
+ * @param {string} sessionOptions.store.host - Host name for database connection
+ * @param {number} sessionOptions.store.port - Port number for database connection
+ * @param {string} sessionOptions.store.user - Database user
+ * @param {string} sessionOptions.store.password - Password for the above database user
+ * @param {string} sessionOptions.store.database - Database name
+ * @param {boolean} sessionOptions.store.clearExpired - Whether or not to automatically check for and clear expired sessions
+ * @param {number} sessionOptions.store.checkExpirationInterval - How frequently expired sessions will be cleared; milliseconds
+ * @param {number} sessionOptions.store.expiration - The maximum age of a valid session; milliseconds
+ * @param {boolean} sessionOptions.store.createDatabaseTable - Whether or not to create the sessions database table, if one does not already exist
+ * @param {number} sessionOptions.store.connectionLimit - Number of connections when creating a connection pool
+ * @param {boolean} sessionOptions.store.endConnectionOnClose - Whether or not to end the database connection when the store is closed
+ * @param {string} sessionOptions.store.charset - Charset of database
+ * @param {Object} sessionOptions.store.schema - Schema for database
+ * @param {sring} sessionOptions.store.schema.tableName - Name of database table
+ * @param {Object} sessionOptions.store.schema.columnNames - Name of columns in the database table
+ * @param {string} sessionOptions.store.schema.columnNames.session_id - Name of session id column
+ * @param {string} sessionOptions.store.schema.columnNames.expires - Name of expriation column
+ * @param {string} sessionOptions.store.schema.columnNames.data - Name of data column
+ * @returns {Function} - Express Function
+ **/
+module.exports = function(express, middlewareOptions, sessionOptions) {
+  var views = middlewareOptions.views || __dirname + "/views";
+  express.set("views", views);
+  var viewEngine = middlewareOptions.viewEngine || "ejs";
+  express.set("view engine", viewEngine);
+  express.use(require("helmet")());
+  var staticDirectory = middlewareOptions.static || "static";
+  express.use(require("express").static(staticDirectory));
+  express.use(require("express").static("node_modules"));
+  express.use(require("cookie-parser")());
+  express.use(bodyParser.urlencoded({
+    extended: false
+  }));
+  express.use(bodyParser.json());
+  if (sessionOptions != undefined) {
+    express.use(require("./sessions.js")(sessionOptions));
+  }
+  return express;
+};</code></pre>
+  </article>
+</section>
+
+    
+
+
+  </div>
+
+  <br class="clear">
+
+  <footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
+  </footer>
+
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/pagelocation.js"></script>
+
+  
+
+</body>
+</html>

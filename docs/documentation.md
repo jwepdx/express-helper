@@ -22,17 +22,47 @@ Create a HTTP Server
 | --- | --- | --- |
 | routes | <code>string</code> | Routing Path File (JS file) |
 | httpPort | <code>number</code> | Server Port |
-| options | <code>object</code> | Configuration options for server |
-| options.views | <code>string</code> | Folder for application views |
-| options.viewEngine | <code>string</code> | Express View Engine |
-| options.static | <code>string</code> | Folder to server static files from |
-| options.session | <code>object</code> | Configuration for express-session |
-| options.session.use | <code>boolean</code> | Use express-session? |
-| options.session.name | <code>string</code> | Name for session |
-| options.session.secret | <code>string</code> | Session secret |
-| options.session.resave | <code>boolean</code> | Resave Session |
-| options.session.saveUninitialized | <code>boolean</code> | Save Uninitialized |
-| options.authFunction | <code>function</code> | Function for authentication, if null secured routes will error |
+| middlewareOptions | <code>object</code> | Configuration options for middleware |
+| middlewareOptions.views | <code>string</code> | Folder for application views |
+| middlewareOptions.viewEngine | <code>string</code> | Express View Engine |
+| middlewareOptions.static | <code>string</code> | Folder to server static files from |
+| middlewareOptions.session | <code>boolean</code> | Use express-session |
+| sessionOptions | <code>Object</code> | Configuration for session |
+| sessionOptions.cookie | <code>Object</code> | Object for configuring session cookie |
+| sessionOptions.cookie.domain | <code>string</code> | Domain the cookie applies to |
+| sessionOptions.cookie.expires | <code>Date</code> | Date the cookie expires |
+| sessionOptions.cookie.httpOnly | <code>boolean</code> | If true, confines cookie to HTTP request only |
+| sessionOptions.cookie.maxAge | <code>number</code> | Time session is valid in milliseconds |
+| sessionOptions.cookie.path | <code>string</code> | Path that cookie is active on |
+| sessionOptions.cookie.sameSite | <code>boolean</code> \| <code>string</code> | Sets value for SameSite Attribute, see express-session for more details |
+| sessionOptions.cookie.secure | <code>boolean</code> | If true cookie will only be sent over HTTPS |
+| sessionOptions.name | <code>string</code> | Name of session ID cookie |
+| sessionOptions.proxy | <code>boolean</code> | Is proxy trusted |
+| sessionOptions.resave | <code>boolean</code> | Saves session even if not modified |
+| sessionOptions.rolling | <code>boolean</code> | If true forces session identifier to be set on each response |
+| sessionOptions.saveUninitialized | <code>boolean</code> | Saves session when new and not modified |
+| sessionOptions.secret | <code>string</code> \| <code>Array.&lt;Object&gt;</code> | Secret to secure session |
+| sessionOptions.unset | <code>string</code> | What to do when session is unset |
+| sessionOptions.store | <code>Object</code> | Object to configure MySQL Session storage |
+| sessionOptions.store.host | <code>string</code> | Host name for database connection |
+| sessionOptions.store.port | <code>number</code> | Port number for database connection |
+| sessionOptions.store.user | <code>string</code> | Database user |
+| sessionOptions.store.password | <code>string</code> | Password for the above database user |
+| sessionOptions.store.database | <code>string</code> | Database name |
+| sessionOptions.store.clearExpired | <code>boolean</code> | Whether or not to automatically check for and clear expired sessions |
+| sessionOptions.store.checkExpirationInterval | <code>number</code> | How frequently expired sessions will be cleared; milliseconds |
+| sessionOptions.store.expiration | <code>number</code> | The maximum age of a valid session; milliseconds |
+| sessionOptions.store.createDatabaseTable | <code>boolean</code> | Whether or not to create the sessions database table, if one does not already exist |
+| sessionOptions.store.connectionLimit | <code>number</code> | Number of connections when creating a connection pool |
+| sessionOptions.store.endConnectionOnClose | <code>boolean</code> | Whether or not to end the database connection when the store is closed |
+| sessionOptions.store.charset | <code>string</code> | Charset of database |
+| sessionOptions.store.schema | <code>Object</code> | Schema for database |
+| sessionOptions.store.schema.tableName | <code>sring</code> | Name of database table |
+| sessionOptions.store.schema.columnNames | <code>Object</code> | Name of columns in the database table |
+| sessionOptions.store.schema.columnNames.session_id | <code>string</code> | Name of session id column |
+| sessionOptions.store.schema.columnNames.expires | <code>string</code> | Name of expriation column |
+| sessionOptions.store.schema.columnNames.data | <code>string</code> | Name of data column |
+| authFunction | <code>function</code> | Function for authentication, if null secured routes will error |
 
 **Example** *(Create a HTTP server on port 80)*  
 ```js
@@ -65,17 +95,47 @@ Create a HTTPS Server
 | httpsOptions | <code>object</code> | Configuration for HTTPS |
 | httpsOptions.privateKey | <code>string</code> | Private Key File |
 | httpsOptions.certificate | <code>string</code> | Certificate File |
-| options | <code>object</code> | Configuration options for server |
-| options.views | <code>string</code> | Folder for application views |
-| options.viewEngine | <code>string</code> | Express View Engine |
-| options.static | <code>string</code> | Folder to server static files from |
-| options.session | <code>object</code> | Configuration for express-session |
-| options.session.use | <code>boolean</code> | Use express-session? |
-| options.session.name | <code>string</code> | Name for session |
-| options.session.secret | <code>string</code> | Session secret |
-| options.session.resave | <code>boolean</code> | Resave Session |
-| options.session.saveUninitialized | <code>boolean</code> | Save Uninitialized |
-| options.authFunction | <code>function</code> | Function for authentication, if null secured routes will error |
+| middlewareOptions | <code>object</code> | Configuration options for server |
+| middlewareOptions.views | <code>string</code> | Folder for application views |
+| middlewareOptions.viewEngine | <code>string</code> | Express View Engine |
+| middlewareOptions.static | <code>string</code> | Folder to server static files from |
+| middlewareOptions.session | <code>boolean</code> | Use express-session? |
+| sessionOptions | <code>Object</code> | Configuration for session |
+| sessionOptions.cookie | <code>Object</code> | Object for configuring session cookie |
+| sessionOptions.cookie.domain | <code>string</code> | Domain the cookie applies to |
+| sessionOptions.cookie.expires | <code>Date</code> | Date the cookie expires |
+| sessionOptions.cookie.httpOnly | <code>boolean</code> | If true, confines cookie to HTTP request only |
+| sessionOptions.cookie.maxAge | <code>number</code> | Time session is valid in milliseconds |
+| sessionOptions.cookie.path | <code>string</code> | Path that cookie is active on |
+| sessionOptions.cookie.sameSite | <code>boolean</code> \| <code>string</code> | Sets value for SameSite Attribute, see express-session for more details |
+| sessionOptions.cookie.secure | <code>boolean</code> | If true cookie will only be sent over HTTPS |
+| sessionOptions.name | <code>string</code> | Name of session ID cookie |
+| sessionOptions.proxy | <code>boolean</code> | Is proxy trusted |
+| sessionOptions.resave | <code>boolean</code> | Saves session even if not modified |
+| sessionOptions.rolling | <code>boolean</code> | If true forces session identifier to be set on each response |
+| sessionOptions.saveUninitialized | <code>boolean</code> | Saves session when new and not modified |
+| sessionOptions.secret | <code>string</code> \| <code>Array.&lt;Object&gt;</code> | Secret to secure session |
+| sessionOptions.unset | <code>string</code> | What to do when session is unset |
+| sessionOptions.store | <code>Object</code> | Object to configure MySQL Session storage |
+| sessionOptions.store.host | <code>string</code> | Host name for database connection |
+| sessionOptions.store.port | <code>number</code> | Port number for database connection |
+| sessionOptions.store.user | <code>string</code> | Database user |
+| sessionOptions.store.password | <code>string</code> | Password for the above database user |
+| sessionOptions.store.database | <code>string</code> | Database name |
+| sessionOptions.store.clearExpired | <code>boolean</code> | Whether or not to automatically check for and clear expired sessions |
+| sessionOptions.store.checkExpirationInterval | <code>number</code> | How frequently expired sessions will be cleared; milliseconds |
+| sessionOptions.store.expiration | <code>number</code> | The maximum age of a valid session; milliseconds |
+| sessionOptions.store.createDatabaseTable | <code>boolean</code> | Whether or not to create the sessions database table, if one does not already exist |
+| sessionOptions.store.connectionLimit | <code>number</code> | Number of connections when creating a connection pool |
+| sessionOptions.store.endConnectionOnClose | <code>boolean</code> | Whether or not to end the database connection when the store is closed |
+| sessionOptions.store.charset | <code>string</code> | Charset of database |
+| sessionOptions.store.schema | <code>Object</code> | Schema for database |
+| sessionOptions.store.schema.tableName | <code>sring</code> | Name of database table |
+| sessionOptions.store.schema.columnNames | <code>Object</code> | Name of columns in the database table |
+| sessionOptions.store.schema.columnNames.session_id | <code>string</code> | Name of session id column |
+| sessionOptions.store.schema.columnNames.expires | <code>string</code> | Name of expriation column |
+| sessionOptions.store.schema.columnNames.data | <code>string</code> | Name of data column |
+| authFunction | <code>function</code> | Function for authentication, if null secured routes will error |
 
 **Example** *(Create a HTTPS server on port 443)*  
 ```js
