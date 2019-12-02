@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      Home - Documentation
+      redirectHttp - Documentation
   </title>
 
   <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
@@ -51,14 +51,14 @@
 
   <div class="top-nav-wrapper">
     <ul>
-      <li  class="active" >
+      <li >
         <a href="index.html">
           
-          
-            <svg fill="#0095dd" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+            <svg fill="#6D6D6D" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
               <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
               <path d="M0 0h24v24H0z" fill="none"/>
             </svg>
+          
           
         </a>
       </li>
@@ -80,52 +80,199 @@
 
   <div id="main">
     
+      <h1 class="page-title">
+        redirectHttp
+      </h1>
+    
 
+    
+
+<section>
+  <header>
     
       
+        
+  </header>
+
+  <article>
+    <div class="container-overview">
+      
+        
+          <div class="description">
+            <p>Redirect HTTP to HTTPS</p>
+          </div>
+        
+
+        
+          
 
 
 
-    
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
 
       
 
+      
 
-  <section class="readme">
-    <article>
-      <h1>Express Helper</h1>
-<p><a href="https://travis-ci.com/jwepdx/express-helper"><img src="https://travis-ci.com/jwepdx/express-helper.svg?branch=master" alt="Build Status"></a>
-<a href="https://www.codacy.com/manual/jacobwevans21/express-helper?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jwepdx/express-helper&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/4df8eb3dc4be4e70921db5e25fbed660" alt="Codacy Badge"></a>
-<a href="https://npmjs.org/package/express-helper"><img src="https://img.shields.io/npm/v/express-helper.svg" alt="NPM Version"></a>
-<a href="https://npmjs.org/package/express-helper"><img src="https://img.shields.io/npm/dm/express-helper.svg" alt="NPM Downloads"></a></p>
-<h2>Installation</h2>
-<pre class="prettyprint source lang-bash"><code>$ npm install express-helper
-</code></pre>
-<h2>Usage</h2>
-<pre class="prettyprint source lang-javascript"><code>const server = require(&quot;express-helper&quot;);
+      <th class="last">Description</th>
+    </tr>
+  </thead>
 
-server.http(&quot;./routes&quot;, 80,{
-  views: &quot;views&quot;,
-  viewEngine: &quot;ejs&quot;,
-  static: &quot;static&quot;,
-  session: {
-    use: true,
-    name: &quot;sessionId&quot;,
-    secret: &quot;unknown string&quot;,
-    resave: false,
-    saveUninitialized: true
-  },
-  authFunction: function(req, res, next) {
-    next();
-  }
-});
-</code></pre>
-<h2><a href="http://jacobwevans.me/express-helper">Documentation</a></h2>
-    </article>
-  </section>
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>redirect</code></td>
+        
 
+        <td class="type">
+          
+            
+    <span class="param-type">
+      boolean
+    </span>
 
     
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>True to redirect HTTP to HTTPS</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="index.js.html">index.js</a>, <a href="index.js.html#line111">line 111</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#redirectHttp-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="redirectHttp-examples">Example</h5>
+    
+  <p class="code-caption">
+    Redirect HTTP to HTTPS
+  </p>
+
+
+  <pre class="prettyprint"><code>redirectHttp(true);</code></pre>
+
+
+  </div>
+
+
+        
+      
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+  </article>
+</section>
+
+
 
 
   </div>

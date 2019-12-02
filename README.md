@@ -14,12 +14,12 @@ $ npm install express-helper
 ```
 ## Usage
 ``` javascript
-const server = require('express-helper');
+const server = require("express-helper");
 
-server.http(require('./routes'), 80,{
-  views: "views.test",
+server.http("./routes", 80,{
+  views: "views",
   viewEngine: "ejs",
-  static: "static.test",
+  static: "static",
   session: {
     use: true,
     name: "sessionId",
@@ -33,4 +33,4 @@ server.http(require('./routes'), 80,{
 });
 ```
 
-## [Documentation](/wiki)
+## [Documentation](http://jacobwevans.me/express-helper)

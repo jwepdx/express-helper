@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      express-helper - Documentation
+      https - Documentation
   </title>
 
   <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
@@ -75,13 +75,13 @@
 
     
 
-    <h3>Modules</h3><ul><li id="express-helper-nav"><a href="module-express-helper.html">express-helper</a><ul class='methods'><li data-type="method" id="express-helper-http-nav"><a href="module-express-helper.html#~http">http</a></li><li data-type="method" id="express-helper-https-nav"><a href="module-express-helper.html#~https">https</a></li><li data-type="method" id="express-helper-redirectHttp-nav"><a href="module-express-helper.html#~redirectHttp">redirectHttp</a></li></ul></li></ul>
+    <h3>Modules</h3><ul><li id="http-nav"><a href="module-http.html">http</a></li><li id="https-nav"><a href="module-https.html">https</a></li><li id="redirectHttp-nav"><a href="module-redirectHttp.html">redirectHttp</a></li></ul>
   </nav>
 
   <div id="main">
     
       <h1 class="page-title">
-        express-helper
+        https
       </h1>
     
 
@@ -99,7 +99,7 @@
       
         
           <div class="description">
-            <p>Module to help create an express server with propper middleware and headers</p>
+            <p>Create a HTTPS Server</p>
           </div>
         
 
@@ -108,709 +108,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-      <ul>
-        
-          <li>
-            Jacob Evans
-          </li>
-        
-      </ul>
-    </dd>
-  
-
-  
-
-  
-    <dt class="tag-license">License:</dt>
-    <dd class="tag-license">
-      <ul class="dummy">
-        <li>
-          MIT
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="index.js.html">index.js</a>, <a href="index.js.html#line1">line 1</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-      
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-      <h3 class="subsection-title">Methods</h3>
-
-      
-        
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#~http">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id="~http">
-      <span class="type-signature">(inner) </span>http<span class="signature">(routes, httpPort, options)</span><span class="type-signature"></span>
-    </h4>
-  </span>
-
-  
-
-
-
-  <div class="description">
-    <p>Create a HTTP Server</p>
-  </div>
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>routes</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      string
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>Routing Path File (JS file)</p>
-          
-        </td>
-      </tr>
-
-    
-      <tr>
-        
-          <td class="name"><code>httpPort</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      number
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>Server Port</p>
-          
-        </td>
-      </tr>
-
-    
-      <tr>
-        
-          <td class="name"><code>options</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      object
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>Configuration options for server</p>
-          
-            <h6>Properties</h6>
-            
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>views</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      string
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>Folder for application views</p>
-          
-        </td>
-      </tr>
-
-    
-      <tr>
-        
-          <td class="name"><code>viewEngine</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      string
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>Express View Engine</p>
-          
-        </td>
-      </tr>
-
-    
-      <tr>
-        
-          <td class="name"><code>static</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      string
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>Folder to server static files from</p>
-          
-        </td>
-      </tr>
-
-    
-      <tr>
-        
-          <td class="name"><code>session</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      object
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>Configuration for express-session</p>
-          
-            <h6>Properties</h6>
-            
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>use</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      boolean
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>Use express-session?</p>
-          
-        </td>
-      </tr>
-
-    
-      <tr>
-        
-          <td class="name"><code>name</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      string
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>Name for session</p>
-          
-        </td>
-      </tr>
-
-    
-      <tr>
-        
-          <td class="name"><code>secret</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      string
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>Session secret</p>
-          
-        </td>
-      </tr>
-
-    
-      <tr>
-        
-          <td class="name"><code>resave</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      boolean
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>Resave Session</p>
-          
-        </td>
-      </tr>
-
-    
-      <tr>
-        
-          <td class="name"><code>saveUninitialized</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      boolean
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>Save Uninitialized</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-          
-        </td>
-      </tr>
-
-    
-      <tr>
-        
-          <td class="name"><code>authFunction</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      function
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>Function for authentication, if null secured routes will error</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default">
-      <ul class="dummy">
-        <li>
-          false
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="index.js.html">index.js</a>, <a href="index.js.html#line13">line 13</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="example-container">
-    <a class="link-icon" href="#http-examples">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h5 id="http-examples">Example</h5>
-    
-  <p class="code-caption">
-    Create a HTTP server on port 80
-  </p>
-
-
-  <pre class="prettyprint"><code>http("./routes.test.js", 80, {  views: "views.test",  viewEngine: "ejs",  static: "static.test",  session: {    use: true,    name: "sessionId",    secret: "unknown string",    resave: false,    saveUninitialized: true  },  authFunction: function(req, res, next) {    next();  }});</code></pre>
-
-
-  </div>
-
-
-      
-        
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#~https">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id="~https">
-      <span class="type-signature">(inner) </span>https<span class="signature">(routes, httpsPort, httpsOptions, options)</span><span class="type-signature"></span>
-    </h4>
-  </span>
-
-  
-
-
-
-  <div class="description">
-    <p>Create a HTTPS Server</p>
-  </div>
 
 
 
@@ -1420,7 +717,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="index.js.html">index.js</a>, <a href="index.js.html#line69">line 69</a>
+          <a href="index.js.html">index.js</a>, <a href="index.js.html#line62">line 62</a>
         </li>
       </ul>
     </dd>
@@ -1458,177 +755,28 @@
   </p>
 
 
-  <pre class="prettyprint"><code>https("./routes.test.js", 443, { privateKey: "./path/to/privateKey", certificate: "./path/to/certificate"}, {  views: "views.test",  viewEngine: "ejs",  static: "static.test",  session: {    use: true,    name: "sessionId",    secret: "unknown string",    resave: false,    saveUninitialized: true  },  authFunction: function(req, res, next) {    next();  }});</code></pre>
+  <pre class="prettyprint"><code>https("./routes.test.js", 443, { privateKey: "./path/to/privateKey", certificate: "./path/to/certificate"}, {  views: "views",  viewEngine: "ejs",  static: "static",  session: {    use: true,    name: "sessionId",    secret: "unknown string",    resave: false,    saveUninitialized: true  },  authFunction: function(req, res, next) {    next();  }});</code></pre>
 
 
   </div>
 
 
-      
         
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#~redirectHttp">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id="~redirectHttp">
-      <span class="type-signature">(inner) </span>redirectHttp<span class="signature">(redirect)</span><span class="type-signature"></span>
-    </h4>
-  </span>
-
-  
-
-
-
-  <div class="description">
-    <p>Redirect HTTP to HTTPS</p>
-  </div>
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
       
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>redirect</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      boolean
-    </span>
+    </div>
 
     
 
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>True to redirect HTTP to HTTPS</p>
-          
-        </td>
-      </tr>
+    
 
     
-  </tbody>
-</table>
 
+     
 
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="index.js.html">index.js</a>, <a href="index.js.html#line118">line 118</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="example-container">
-    <a class="link-icon" href="#redirectHttp-examples">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h5 id="redirectHttp-examples">Example</h5>
     
-  <p class="code-caption">
-    Redirect HTTP to HTTPS
-  </p>
 
+    
 
-  <pre class="prettyprint"><code>redirectHttp(true);</code></pre>
-
-
-  </div>
-
-
-      
     
 
     

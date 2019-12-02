@@ -1,16 +1,22 @@
-<a name="module_express-helper"></a>
+## Modules
 
-## express-helper
+<dl>
+<dt><a href="#module_http">http</a></dt>
+<dd><p>Create a HTTP Server</p>
+</dd>
+<dt><a href="#module_https">https</a></dt>
+<dd><p>Create a HTTPS Server</p>
+</dd>
+<dt><a href="#module_redirectHttp">redirectHttp</a></dt>
+<dd><p>Redirect HTTP to HTTPS</p>
+</dd>
+</dl>
 
-* [express-helper](#module_express-helper)
-    * [~http(routes, httpPort, options)](#module_express-helper..http)
-    * [~https(routes, httpsPort, httpsOptions, options)](#module_express-helper..https)
-    * [~redirectHttp(redirect)](#module_express-helper..redirectHttp)
+<a name="module_http"></a>
 
-<a name="module_express-helper..http"></a>
+## http
+Create a HTTP Server
 
-### express-helper~http(routes, httpPort, options)
-**Kind**: inner method of [<code>express-helper</code>](#module_express-helper)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -31,9 +37,9 @@
 **Example** *(Create a HTTP server on port 80)*  
 ```js
 http("./routes.test.js", 80, {
-  views: "views.test",
+  views: "views",
   viewEngine: "ejs",
-  static: "static.test",
+  static: "static",
   session: {
     use: true,
     name: "sessionId",
@@ -46,10 +52,11 @@ http("./routes.test.js", 80, {
   }
 });
 ```
-<a name="module_express-helper..https"></a>
+<a name="module_https"></a>
 
-### express-helper~https(routes, httpsPort, httpsOptions, options)
-**Kind**: inner method of [<code>express-helper</code>](#module_express-helper)  
+## https
+Create a HTTPS Server
+
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -76,9 +83,9 @@ https("./routes.test.js", 443, {
  privateKey: "./path/to/privateKey",
  certificate: "./path/to/certificate"
 }, {
-  views: "views.test",
+  views: "views",
   viewEngine: "ejs",
-  static: "static.test",
+  static: "static",
   session: {
     use: true,
     name: "sessionId",
@@ -91,10 +98,11 @@ https("./routes.test.js", 443, {
   }
 });
 ```
-<a name="module_express-helper..redirectHttp"></a>
+<a name="module_redirectHttp"></a>
 
-### express-helper~redirectHttp(redirect)
-**Kind**: inner method of [<code>express-helper</code>](#module_express-helper)  
+## redirectHttp
+Redirect HTTP to HTTPS
+
 
 | Param | Type | Description |
 | --- | --- | --- |
